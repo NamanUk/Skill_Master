@@ -1,3 +1,4 @@
+git add src/dashboard.py
 import tkinter as tk
 from welcome import WelcomeFrame
 
