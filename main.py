@@ -1,10 +1,5 @@
-from audioop import add
-
-
-git add src/dashboard.py
 import tkinter as tk
 from welcome import WelcomeFrame
-
 
 class MainApplication(tk.Tk):
     def __init__(self):
