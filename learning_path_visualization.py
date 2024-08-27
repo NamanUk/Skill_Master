@@ -1,49 +1,48 @@
 import tkinter as tk
 from tkinter import messagebox
 from login import LoginFrame
+from PIL import Image, ImageTk
 
 class LearningPathVisualizationFrame(tk.Frame):
     def __init__(self, master=None, return_frame=None):
         super().__init__(master)
         self.master = master
         self.return_frame = return_frame
-        self.config(bg='lightblue')
+        self.config(bg='white')
         self.pack(fill='both', expand=True)
         self.create_widgets()
 
     def create_widgets(self):
         # Header
-        self.label_header = tk.Label(self, text="Learning Path Visualization", font=("Arial", 16, "bold"), bg='lightblue')
-        self.label_header.pack(pady=(20, 10))
+        self.label_header = tk.Label(self, text="Learning Path Visualization", font=("Arial", 16, "bold"), bg='white')
+        self.label_header.pack(pady=(10, 5))
 
-        # Visual Representation Button
-        self.button_visual_path = tk.Button(self, text="Visual Representation of Learning Path", font=("Arial", 12), bg='lightgreen', command=self.show_visual_path)
-        self.button_visual_path.pack(pady=(10, 5), padx=10, fill='x')
+        # Graph 1: Display an image of the progress graph
+        self.display_graph_image("progress_graph.png", (300, 200))
 
-        # Modules Progress Button
-        self.button_modules = tk.Button(self, text="Completed/Ongoing/Upcoming Modules", font=("Arial", 12), bg='lightgreen', command=self.show_modules)
-        self.button_modules.pack(pady=5, padx=10, fill='x')
-
-        # Adaptive Difficulty Adjustments Button
-        self.button_difficulty = tk.Button(self, text="Adaptive Difficulty Adjustments", font=("Arial", 12), bg='lightgreen', command=self.adjust_difficulty)
-        self.button_difficulty.pack(pady=5, padx=10, fill='x')
+        # Graph 2: Display an image of the learning path coverage graph
+        self.display_graph_image("coverage_graph.png", (200, 170))
 
         # Log Out Button
-        self.button_logout = tk.Button(self, text="Log Out", font=("Arial", 14), bg='red', command=self.logout)
-        self.button_logout.pack(pady=(10, 2), padx=10, fill='x')
+        self.button_logout = tk.Button(self, text="Log Out", font=("Arial", 12), bg='red', fg= 'white', command=self.logout)
+        self.button_logout.pack(pady=(5, 2), padx=10, fill='x')
 
         # Back Button
-        self.button_back = tk.Button(self, text="Back", font=("Arial", 14), bg='yellow', command=self.go_back)
-        self.button_back.pack(pady=(2, 20), padx=10, fill='x')
+        self.button_back = tk.Button(self, text="Back", font=("Arial", 12), bg='deep sky blue', fg= 'white', command=self.go_back)
+        self.button_back.pack(pady=(2, 10), padx=10, fill='x')
 
-    def show_visual_path(self):
-        messagebox.showinfo("Visual Path", "This would display a visual representation of the learning path.")
+    def display_graph_image(self, image_path, size):
+        # Load the image using PIL
+        image = Image.open(image_path)
 
-    def show_modules(self):
-        messagebox.showinfo("Modules", "This would show details of completed, ongoing, and upcoming modules.")
+        # Resize the image to fit the specified size
+        resized_image = image.resize(size, Image.LANCZOS)
 
-    def adjust_difficulty(self):
-        messagebox.showinfo("Difficulty Adjustments", "Here, users can make adjustments to the difficulty of their learning modules.")
+        # Display the resized image
+        photo = ImageTk.PhotoImage(resized_image)
+        label = tk.Label(self, image=photo, bg='white')
+        label.image = photo  # Keep a reference to avoid garbage collection
+        label.pack(pady=5)
 
     def logout(self):
         # Placeholder function for logout logic

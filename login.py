@@ -13,7 +13,7 @@ class LoginFrame(tk.Frame):
 
     def create_widgets(self):
         # Header
-        self.label_header = tk.Label(self, text="SkillMaster", font=("Arial", 24, 'bold'), bg='white', fg='deep sky blue')
+        self.label_header = tk.Label(self, text="SkillMaster", font=("Arial", 24, 'bold'), bg='white', fg='black')
         self.label_header.pack(pady=(50, 20))
 
         # Email Entry
@@ -33,7 +33,7 @@ class LoginFrame(tk.Frame):
         self.button_login.pack(pady=(20, 10))
 
         # Sign Up Link
-        self.label_sign_up = tk.Label(self, text="New to Skillmaster? Sign Up", fg="dodger blue", bg='white', font=("Arial", 12), cursor="hand2")
+        self.label_sign_up = tk.Label(self, text="New to Skillmaster? Sign Up", fg="black", bg='white', font=("Arial", 12), cursor="hand2")
         self.label_sign_up.pack(pady=(20, 10))
         from register import RegisterFrame
         self.label_sign_up.bind("<Button-1>", lambda e: self.master.switch_frame(RegisterFrame))

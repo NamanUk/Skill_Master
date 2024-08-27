@@ -13,7 +13,7 @@ class RegisterFrame(tk.Frame):
 
     def create_widgets(self):
         # Header
-        self.label_header = tk.Label(self, text="Create New Account", font=("Arial", 18, 'bold'), bg='white', fg='deep sky blue')
+        self.label_header = tk.Label(self, text="Create New Account", font=("Arial", 18, 'bold'), bg='white', fg='black')
         self.label_header.pack(pady=(50, 20))
 
         # Full Name Entry
@@ -45,7 +45,7 @@ class RegisterFrame(tk.Frame):
         self.button_sign_up.pack(pady=(30, 10))
         
         # Back Button
-        self.button_back = tk.Button(self, text="Back", font=("Arial", 12), bg='light grey', command=self.go_back)
+        self.button_back = tk.Button(self, text="Back", font=("Arial", 12), bg='deep sky blue', fg='white', command=self.go_back)
         self.button_back.pack(pady=(10, 20))
 
     def register(self):

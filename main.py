@@ -1,11 +1,12 @@
 import tkinter as tk
 from welcome import WelcomeFrame
 
+
 class MainApplication(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Skill Master")
-        self.geometry("300x550")
+        self.geometry("600x550")
         self._frame = None
         self.switch_frame(WelcomeFrame)
 
